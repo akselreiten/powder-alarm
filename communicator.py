@@ -14,5 +14,5 @@ def send_message(recommendations):
         if response.status_code != 200:
              raise ValueError("Request to slack returned an error %s the response is: \n%s" %(response.status_code, response.text))
     except:
-        print("Error: Could not send message")
+        print("Error in Communicator: Could not send message")
         pass

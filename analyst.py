@@ -23,8 +23,7 @@ class Analyst:
                 if temperature[i] <= self.temperature_upper_limit:
                     snow += precipitation[i]
 
-            if snow >= self.precipitation_lower_limit:
+	    if snow >= self.precipitation_lower_limit:
                 dow = parser.parse(elem).strftime("%a")
                 recommendations.append("Powder alarm @ " + str(location) + ": " + str(snow) + " mm (" + str(dow) + ", " + str(elem) + ")")
-
         return recommendations

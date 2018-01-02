@@ -13,11 +13,13 @@ monitors = {
     "Isfjorden": WeatherMonitor("Isfjorden", url + "Norge/Møre_og_Romsdal/Rauma/Isfjorden/varsel.xml"),
     "Midsund" : WeatherMonitor("Midsund", url + "Norge/Møre_og_Romsdal/Midsund/Nord-Heggdal~189330/varsel.xml"),
     "Ruten": WeatherMonitor("Ruten", url + "Norge/S%C3%B8r-Tr%C3%B8ndelag/Orkdal/S%C3%B8vatnet/varsel.xml"),
-    "Åre" : WeatherMonitor("Åre", url + "Sverige/J%C3%A4mtland/%C3%85re/varsel.xml")
+    "Åre" : WeatherMonitor("Åre", url + "Sverige/J%C3%A4mtland/%C3%85re/varsel.xml"),
+    "Stranda" : WeatherMonitor("Stranda", url + "Norge/Møre_og_Romsdal/Stranda/Stranda/varsel.xml"),
+    "Overøye" : WeatherMonitor("Overøye", url + "Norge/Møre_og_Romsdal/Stranda/Stranda/varsel.xml"),
 }
 
-analyst = Analyst()
-limit = 4
+analyst = Analyst(temperature_upper_limit=1.0, precipitation_lower_limit=5.0)
+limit = 3
 
 while True:
 
@@ -31,8 +33,11 @@ while True:
             data = monitors[elem].get_daily_data(limit)
             local_recommendations = analyst.get_recommendation(data, elem)
             recommendations.extend(local_recommendations)
+        if len(recommendations) > 0:
+            send_message(recommendations)
+        else:
+            print "\tNo powder-alarm..."
 
-        send_message(recommendations)
         print "Finalized in " + str(time.time() - start_time) + " seconds."
         for r in recommendations: print "\t" + r
 
