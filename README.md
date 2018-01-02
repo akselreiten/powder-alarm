@@ -1,4 +1,5 @@
 # powder-alarm
+Powder alarm for Isfjorden, Sunndalsøra, Hemne, Åre, Midsund, Storlidalen, based on weather forecasts from www.yr.no. Fetching data once every 6 hours and communicates through a slack webhook integration. 
 
 ## Install:
 1. git clone https://github.com/akselreiten/powder-alarm
