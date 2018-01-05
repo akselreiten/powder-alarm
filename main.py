@@ -16,6 +16,7 @@ monitors = {
     "Åre" : WeatherMonitor("Åre", url + "Sverige/J%C3%A4mtland/%C3%85re/varsel.xml"),
     "Stranda" : WeatherMonitor("Stranda", url + "Norge/Møre_og_Romsdal/Stranda/Stranda/varsel.xml"),
     "Overøye" : WeatherMonitor("Overøye", url + "Norge/Møre_og_Romsdal/Stranda/Stranda/varsel.xml"),
+    "Vassfjellet" : WeatherMonitor("Vassfjellet", url + "Norge/Sør-Trøndelag/Klæbu/Vassfjellet_skisenter/varsel.xml"),
 }
 
 analyst = Analyst(temperature_upper_limit=1.0, precipitation_lower_limit=5.0)
